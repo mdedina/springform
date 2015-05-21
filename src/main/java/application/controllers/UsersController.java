@@ -3,6 +3,7 @@ package application.controllers;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,9 +17,10 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value = "/create", method=RequestMethod.POST)
-	public String createUser(HttpServletRequest req){
+	public String createUser(HttpServletRequest req, Model model){
 		String name = req.getParameter("name");
 		System.out.println("My name is " + name);
+		model.addAttribute("name", name);
 		return "result";
 	}
 }
